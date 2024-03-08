@@ -4,7 +4,11 @@
   justify-content: space-between;
   align-items: center;
   padding: 6rem;
-  min-height: 100vh;
+
+  min-height: 50vh;
+  overflow: hidden;
+
+
 }
 
 .box {
@@ -32,10 +36,35 @@
   justify-content: flex-start;
   align-items: flex-start;
   padding: 6rem;
-  min-height: 100vh;
 }
 
 .text {
   align-self: center;
 
+}
+
+.clientList {
+  /* list-style-type: none; */
+  padding: 0;
+
+    border: 1px solid red
+}
+
+.clientHeader {
+  gap: 70px;
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  padding: 5px 0;
+}
+
+.clientItem {
+  gap: 30px;
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 0;
+}
+
+.clientItem p {
+  display: flex;
 }

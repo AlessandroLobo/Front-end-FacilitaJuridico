@@ -1,0 +1,95 @@
+.main {
+  display: flex;
+  padding-top: 8rem;
+  height: 300px;
+  width: 100%;
+  z-index: 2000;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+
+}
+
+.box {
+  display: flex;
+  color: #C4C4CC;
+  border-radius: 20px;
+  align-items: center;
+  justify-content: center;
+  background-color: #2c2c2c;
+  border: 1px solid #2c2c2c;
+  transition: transform 0.3s;
+
+}
+
+
+.formContainer {
+  gap: 20px;
+  display: flex;
+  width: 400px;
+  flex-direction: column;
+  justify-content: space-between;
+
+
+}
+
+.containerLabelInput {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+}
+
+.label {
+  font-size: large;
+}
+
+.input {
+  border: none;
+  height: 50px;
+  width: 250px;
+  color: white;
+  font-size: 14px;
+  padding-left: 10px;
+  border-radius: 5px;
+  align-self: flex-end;
+  outline: none;
+  background-color: #333;
+
+}
+
+.input:focus {
+  background-color: #333;
+}
+
+.div {
+  gap: 20px;
+  display: flex;
+  padding: 6rem;
+  min-height: 100vh;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.text {
+  align-self: center;
+
+}
+
+.button {
+  border: none;
+  height: 30px;
+  font-size: large;
+  border-radius: 5px;
+  align-self: flex-end;
+  background-color: #333;
+  color: white;
+  width: 100%;
+}
+
+.button:hover {
+  cursor: pointer;
+  color: aqua;
+  background-color: #555;
+}

@@ -1,0 +1,92 @@
+.main {
+  max-width: 872px;
+
+
+
+}
+
+.overlay {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  backdrop-filter: blur(5px);
+}
+
+.containerModal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 600px;
+  width: 4000px;
+  height: 600px;
+  margin: 20px auto 4px;
+  position: fixed;
+  top: 42%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 999;
+  background-color: #242323;
+  border: 1px solid #353333;
+  border-radius: 8px;
+  overflow: auto;
+  overflow: hidden;
+
+}
+
+.containerButton {
+  background-color: transparent;
+  color: #f2f2f2;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  border: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.buttonModal {
+  color: #b2b200;
+  z-index: 3000;
+  display: flex;
+  width: 3rem;
+  height: 3rem;
+  border: none;
+  opacity: 0.8;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+
+
+
+}
+
+.containerText {
+  display: flex;
+  background-color: transparent;
+  width: 100%;
+  color: #f2f2f2;
+  border: none;
+  text-align: center;
+  height: 100%;
+  overflow-y: auto;
+  max-height: calc(100vh);
+  scrollbar-width: none;
+  /* scrollbar-height: none; */
+  -ms-overflow-style: none;
+}
+
+.customX {
+  color: #cccccc;
+  font-size: 4rem;
+
+}
+
+.customX:hover {
+  cursor: pointer;
+  color: #00e7f9;
+}
