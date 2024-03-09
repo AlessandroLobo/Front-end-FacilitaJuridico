@@ -22,11 +22,51 @@
   justify-content: center;
   align-items: center;
   transition: transform 0.3s;
+
+
 }
 
 .box:hover {
   transform: scale(1.1);
   border-radius: 20px;
+}
+
+.containerTable {
+  display: flex;
+  flex-direction: column;
+
+}
+
+.containerLabelInput {
+  gap: 20px;
+  padding-left: 10px;
+  padding-bottom: 20px;
+  display: flex;
+  align-items: center;
+
+  border-bottom: 1px solid #474747;
+}
+
+.label {
+  font-size: large;
+}
+
+.input {
+  border: none;
+  height: 50px;
+  width: 250px;
+  color: white;
+  font-size: 14px;
+  padding-left: 10px;
+  border-radius: 5px;
+  align-self: flex-end;
+  outline: none;
+  background-color: #333;
+
+}
+
+.input:focus {
+  background-color: #333;
 }
 
 .div {
@@ -44,27 +84,29 @@
 }
 
 .clientList {
-  /* list-style-type: none; */
-  padding: 0;
-
-    border: 1px solid red
+  border-radius: 4px;
 }
 
 .clientHeader {
-  gap: 70px;
+  gap: 120px;
   display: flex;
   justify-content: space-between;
+  border-bottom: 1px solid #474747;
   font-weight: bold;
-  padding: 5px 0;
+  padding: 8px;
 }
 
 .clientItem {
-  gap: 30px;
-  display: flex;
-  justify-content: space-between;
-  padding: 5px 0;
+  gap: 10px;
+  display: grid;
+  padding: 8px;
+  row-gap: 10px;
+  border-bottom: 1px solid #474747;
+  grid-template-columns: 2fr 3fr 3fr 2fr 1fr;
+
 }
 
+
 .clientItem p {
-  display: flex;
+  margin: 0;
 }

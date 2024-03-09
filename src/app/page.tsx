@@ -59,32 +59,51 @@ export default function Home() {
         </div>
 
       </div>
-      <div>
 
-        <ul className={`${styles.clientList} ${styles.horizontalList}`}>
-          {clientList.length > 0 ? (
-            <>
-              <li className={styles.clientHeader}>
-                <p>Nome</p>
-                <p>Email</p>
-                <p>Tel</p>
-                <p>Coord X</p>
-                <p>Coord Y</p>
-              </li>
-              {clientList.map((client) => (
-                <li key={client.id} className={styles.clientItem}>
-                  <p>{client.name}</p>
-                  <p>{client.email}</p>
-                  <p>{client.phonenumber}</p>
-                  <p>{client.coordinatex}</p>
-                  <p>{client.coordinatey}</p>
-                </li>
-              ))}
-            </>
-          ) : (
-            <p>{clientList.length === 0 ? 'Nenhum cliente encontrado.' : 'Ainda carregando dados...'}</p>
-          )}
-        </ul>
+      <div className={styles.containerTable}>
+        <div className={styles.containerLabelInput}>
+          <label htmlFor="name" className={styles.label}>Nome:</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            // value={formData.name}
+            // onChange={handleChange}
+            placeholder="Digite seu nome"
+            className={styles.input}
+          />
+        </div>
+
+        <div>
+          <table className={styles.clientList}>
+            <thead>
+              <tr className={styles.clientHeader}>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Tel</th>
+                <th>Coord X</th>
+                <th>Coord Y</th>
+              </tr>
+            </thead>
+            <tbody>
+              {clientList.length > 0 ? (
+                clientList.map((client) => (
+                  <tr key={client.id} className={styles.clientItem}>
+                    <td>{client.name}</td>
+                    <td>{client.email}</td>
+                    <td>{client.phonenumber}</td>
+                    <td>{client.coordinatex}</td>
+                    <td>{client.coordinatey}</td>
+                  </tr>
+                ))
+              ) : (
+                <tr>
+                  <td colSpan={5}>{clientList.length === 0 ? 'Nenhum cliente encontrado.' : 'Ainda carregando dados...'}</td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+        </div>
       </div>
     </main>
   );
