@@ -51,6 +51,23 @@
   font-size: large;
 }
 
+.button {
+  border: none;
+  height: 50px;
+  font-size: large;
+  border-radius: 5px;
+  align-self: flex-end;
+  background-color: #333;
+  color: white;
+  width: 100px;
+}
+
+.button:hover {
+  cursor: pointer;
+  color: aqua;
+  background-color: #555;
+}
+
 .input {
   border: none;
   height: 50px;

@@ -1,9 +1,10 @@
 'use client'
 
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import styles from "./page.module.css";
 import ModalInfo from './components/ModalInfo/modalInfo';
 import ClientRegistration from './components/ClienteRegistration/cientRegistration';
+import axios from 'axios';
 
 // Interface para definir o tipo dos dados do cliente
 interface IClient {
@@ -15,35 +16,51 @@ interface IClient {
   coordinatey: number;
 }
 
+interface FormData {
+  searchClient: string
+}
+
+
 export default function Home() {
 
   const [modalOpen, setModalOpen] = useState(false);
 
-  // Definindo a tipagem para clientList como um array de Clientes
+  const [formData, setFormData] = useState<FormData>({
+    searchClient: "",
+  });
+
+
+
+  function handleSearchChange(event: React.ChangeEvent<HTMLInputElement>) {
+    const { value } = event.target;
+    setFormData({ ...formData, searchClient: value });
+  }
+
+
+
   const [clientList, setClientList] = useState<IClient[]>([]);
 
-  useEffect(() => {
-    // Realizando a requisição GET para obter os dados dos clientes
-    fetch('http://localhost:3333/clients/')
+  const handleSearch = () => {
+    const searchTerm = formData.searchClient;
+    console.log('searchClient', formData.searchClient);
+
+    axios.get('http://localhost:3333/clients', {
+      params: {
+        searchTerm
+      }
+    })
       .then(response => {
-        if (response.ok) {
-          return response.json(); // Transforma a resposta em JSON
+        if (response.status === 200) {
+          const clients = response.data.clients; // Access the clients array within the response object
+          setClientList(clients);
         } else {
           throw new Error('Erro ao obter os dados dos clientes.');
-        }
-      })
-      .then(data => {
-        if (Array.isArray(data.clients)) {
-          console.log(data.clients);
-          setClientList(data.clients); // Atualiza o clientList com os dados recebidos
-        } else {
-          console.error('Os dados recebidos não contêm um array de clientes:', data);
         }
       })
       .catch(error => {
         console.error('Erro na requisição:', error);
       });
-  }, []);
+  }
 
   return (
     <main className={styles.main}>
@@ -67,11 +84,13 @@ export default function Home() {
             type="text"
             id="name"
             name="name"
-            // value={formData.name}
-            // onChange={handleChange}
+            value={formData.searchClient}
+            onChange={handleSearchChange}
             placeholder="Digite seu nome"
             className={styles.input}
           />
+          <button onClick={handleSearch} className={`${styles.button} ${styles.buttonHover}`}>Buscar</button>
+
         </div>
 
         <div>
