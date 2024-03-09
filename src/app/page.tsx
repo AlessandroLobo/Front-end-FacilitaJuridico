@@ -1,10 +1,11 @@
 'use client'
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from "./page.module.css";
 import ModalInfo from './components/ModalInfo/modalInfo';
-import ClientRegistration from './components/ClienteRegistration/cientRegistration';
+import ClientRegistration from './components/ClientRegistration/clientRegistration';
 import axios from 'axios';
+import ClientsRoutes from './components/ClientsRoutes/ClientesRoutes';
 
 // Interface para definir o tipo dos dados do cliente
 interface IClient {
@@ -25,9 +26,15 @@ export default function Home() {
 
   const [modalOpen, setModalOpen] = useState(false);
 
+  const [clientRegistrationOpen, setClientRegistrationOpen] = useState(false);
+
+  const [clienteRoutesOpen, setClienteRoutesOpen] = useState(false);
+
   const [formData, setFormData] = useState<FormData>({
     searchClient: "",
   });
+
+  const [clientList, setClientList] = useState<IClient[]>([]);
 
 
 
@@ -37,8 +44,6 @@ export default function Home() {
   }
 
 
-
-  const [clientList, setClientList] = useState<IClient[]>([]);
 
   const handleSearch = () => {
     const searchTerm = formData.searchClient;
@@ -62,19 +67,39 @@ export default function Home() {
       });
   }
 
+  function handleModalClienteRegistration() {
+    setClienteRoutesOpen(false);
+    setClientRegistrationOpen(true);
+    setModalOpen(true);
+  }
+  function handleModalClienteRoutes() {
+    setClientRegistrationOpen(false);
+    setClienteRoutesOpen(true);
+    setModalOpen(true);
+  }
+
+  useEffect(() => {
+    handleSearch()
+  }, [])
+
+
   return (
     <main className={styles.main}>
       <ModalInfo isOpen={modalOpen} setIsOpen={setModalOpen}>
-        <ClientRegistration />
+        {clientRegistrationOpen && <ClientRegistration />}
+        {clienteRoutesOpen && <ClientsRoutes />}
       </ModalInfo>
       <div className={styles.div}>
-        <div className={styles.box} onClick={() => setModalOpen(true)}>
+        <button className={styles.box} onClick={() => {
+          handleModalClienteRegistration()
+        }}>
           <h1>Cadastro</h1>
-        </div>
-        <div className={styles.box}>
+        </button>
+        <button className={styles.box} onClick={() => {
+          handleModalClienteRoutes()
+        }}>
           <h1>Rotas</h1>
-        </div>
-
+        </button>
       </div>
 
       <div className={styles.containerTable}>

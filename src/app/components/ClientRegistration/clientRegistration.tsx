@@ -1,6 +1,7 @@
 import React, { ChangeEvent, useState } from "react"
 import styles from "./styles.module.css";
-import ModalInfo from "../ModalInfo/modalInfo";
+import axios from "axios";
+import { X } from "@phosphor-icons/react";
 
 interface FormData {
   name: string;
@@ -12,8 +13,7 @@ interface FormData {
 
 export default function ClientRegistration() {
 
-  const [modalOpen, setModalOpen] = useState(false);
-
+  const [registrationSuccess, setRegistrationSuccess] = useState(false);
 
   const [formData, setFormData] = useState<FormData>({
     name: '',
@@ -29,41 +29,48 @@ export default function ClientRegistration() {
       ...formData,
       [name]: value
     });
+
+    setRegistrationSuccess(false);
+  };
+
+  const resetForm = () => {
+    setFormData({
+      name: '',
+      email: '',
+      phoneNumber: '',
+      coordinateX: '',
+      coordinateY: ''
+    });
+
   };
 
   const handleSubmit = () => {
     // Dados a serem enviados para a rota
     const data = formData;
 
-    // Opções para a requisição
-    const options = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    };
-
-    // Realizando a requisição
-    fetch('http://localhost:3333/clients', options)
-      .then(response => {
-        if (response.ok) {
-          console.log('Dados salvos com sucesso!');
-          setModalOpen(true);
-        } else {
-          console.error('Erro ao salvar os dados.');
-        }
+    // Realizando a requisição com Axios
+    axios.post('http://localhost:3333/clients', data)
+      .then(() => {
+        console.log('Dados salvos com sucesso!');
+        setRegistrationSuccess(true);
+        resetForm();
       })
       .catch(error => {
-        console.error('Erro na requisição:', error);
+        console.error('Erro ao salvar os dados.', error);
       });
   };
 
   return (
     <main className={styles.main}>
-      <ModalInfo isOpen={modalOpen} setIsOpen={setModalOpen}>
-        <label>Dados salvos com sucesso</label>
-      </ModalInfo>
+      {registrationSuccess && (
+        <>
+          <div className={styles.icoContainerSuccess}>
+            <X size={34} className={styles.customIcon} onClick={() => setRegistrationSuccess(false)} />
+            <div className={styles.containerSuccess}>Cadastro realizado com sucesso!</div>
+          </div>
+        </>
+
+      )}
       <div className={styles.formContainer}>
         <div className={styles.containerLabelInput}>
           <label htmlFor="name" className={styles.label}>Nome:</label>

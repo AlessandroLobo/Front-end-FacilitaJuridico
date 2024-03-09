@@ -22,6 +22,33 @@
 
 }
 
+.icoContainerSuccess {
+  align-items: center;
+  flex-direction: row;
+}
+
+.containerSuccess {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 6rem;
+  min-height: 100vh;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.customIcon {
+  color: #fafafa;
+
+  background-color: #2c2c2c;
+}
+
+.customIcon:hover {
+  cursor: pointer;
+  color: aqua;
+  background-color: #555;
+}
 
 .formContainer {
   gap: 20px;
