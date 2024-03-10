@@ -1,12 +1,17 @@
-Front-end FacilitaJuridico Project
+# Front-end FacilitaJuridico Project
+
 This is the repository for the Front-end FacilitaJuridico project, developed by Alessandro Lobo.
 
-How to Run the Project
-Clone the repository:
+## How to Run the Project
 
- git clone https://github.com/AlessandroLobo/Front-end-FacilitaJuridico.git
-Clone the repository:
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/AlessandroLobo/Front-end-FacilitaJuridico.git
+   ```
 
+2. Clone the repository:
+
+```bash
 npm install
 
 npm run dev
@@ -16,4 +21,6 @@ yarn dev
 pnpm dev
 # or
 bun dev
-access http://localhost:3000
+```
+3. access
+http://localhost:3000
