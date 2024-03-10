@@ -1,11 +1,20 @@
 .main {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
   padding: 6rem;
+  z-index: 2000;
+  align-items: center;
+  flex-direction: column;
   overflow-y: auto;
   max-height: calc(100vh);
+  justify-content: space-between;
+  overflow-x: hidden;
+}
+
+.title {
+  align-self: center;
+  font-weight: bold;
+  font-size: x-large;
+  padding-bottom: 30px;
 }
 
 .box {
@@ -40,6 +49,7 @@
   padding-bottom: 20px;
   display: flex;
   align-items: center;
+
 
   border-bottom: 1px solid #474747;
 }

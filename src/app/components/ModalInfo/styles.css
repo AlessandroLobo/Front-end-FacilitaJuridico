@@ -1,8 +1,6 @@
 .main {
-  max-width: 872px;
-
-
-
+  overflow-y: auto;
+  max-height: calc(100vh);
 }
 
 .overlay {
@@ -18,13 +16,15 @@
 
 .containerModal {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  max-width: 600px;
-  width: 4000px;
-  height: 600px;
+  max-width: 900px;
+
+  width: 90%;
+  height: 80vh;
   margin: 20px auto 4px;
-  position: fixed;
+  position: absolute;
   top: 42%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -32,9 +32,9 @@
   background-color: #242323;
   border: 1px solid #353333;
   border-radius: 8px;
-  overflow: auto;
-  overflow: hidden;
-
+  overflow-y: auto;
+  max-height: calc(100vh);
+  overflow-x: hidden;
 }
 
 .containerButton {
@@ -76,7 +76,6 @@
   overflow-y: auto;
   max-height: calc(100vh);
   scrollbar-width: none;
-  /* scrollbar-height: none; */
   -ms-overflow-style: none;
 }
 
