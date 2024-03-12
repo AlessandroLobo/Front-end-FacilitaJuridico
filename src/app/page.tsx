@@ -7,7 +7,6 @@ import ClientRegistration from './components/ClientRegistration/clientRegistrati
 import axios from 'axios';
 import ClientsRoutes from './components/ClientsRoutes/ClientesRoutes';
 
-// Interface para definir o tipo dos dados do cliente
 interface IClient {
   id: string
   name: string;
@@ -21,7 +20,7 @@ interface FormData {
   searchClient: string
 }
 
-
+//Home component representing the main page of the application.
 export default function Home() {
 
   const [modalOpen, setModalOpen] = useState(false);
@@ -37,14 +36,14 @@ export default function Home() {
   const [clientList, setClientList] = useState<IClient[]>([]);
 
 
-
+  // Function to handle search changes
   function handleSearchChange(event: React.ChangeEvent<HTMLInputElement>) {
     const { value } = event.target;
     setFormData({ ...formData, searchClient: value });
   }
 
 
-
+  // Function to handle search
   const handleSearch = () => {
     const searchTerm = formData.searchClient;
     console.log('searchClient', formData.searchClient);
@@ -56,7 +55,7 @@ export default function Home() {
     })
       .then(response => {
         if (response.status === 200) {
-          const clients = response.data.clients; // Access the clients array within the response object
+          const clients = response.data.clients;
           setClientList(clients);
         } else {
           throw new Error('Erro ao obter os dados dos clientes.');
@@ -67,11 +66,14 @@ export default function Home() {
       });
   }
 
+  // Functions to handle modal Registration
   function handleModalClienteRegistration() {
     setClienteRoutesOpen(false);
     setClientRegistrationOpen(true);
     setModalOpen(true);
   }
+
+  // Functions to handle modal ClienteRoutes
   function handleModalClienteRoutes() {
     setClientRegistrationOpen(false);
     setClienteRoutesOpen(true);

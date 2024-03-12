@@ -39,5 +39,4 @@ http://localhost:3000
 #### typescript
 
 
-
 Thank you for the opportunity to work on this test. I have learned a great deal, as I always do with new projects, and it has been a very interesting experience.

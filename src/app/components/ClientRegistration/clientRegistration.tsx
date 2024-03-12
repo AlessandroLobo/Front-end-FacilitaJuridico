@@ -11,6 +11,7 @@ interface FormData {
   coordinateY: string;
 }
 
+//Component for client registration.
 export default function ClientRegistration() {
 
   const [registrationSuccess, setRegistrationSuccess] = useState(false);
@@ -23,6 +24,7 @@ export default function ClientRegistration() {
     coordinateY: ''
   });
 
+  // Function to handle form changes
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData({
@@ -33,6 +35,7 @@ export default function ClientRegistration() {
     setRegistrationSuccess(false);
   };
 
+  // Function to reset form
   const resetForm = () => {
     setFormData({
       name: '',
@@ -44,6 +47,7 @@ export default function ClientRegistration() {
 
   };
 
+  // Function to handle form submission
   const handleSubmit = () => {
     // Dados a serem enviados para a rota
     const data = formData;

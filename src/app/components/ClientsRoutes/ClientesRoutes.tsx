@@ -17,6 +17,8 @@ interface IClient {
 interface FormData {
   searchClient: string
 }
+
+//Component representing the routes for clients.
 export default function ClientsRoutes() {
 
 
@@ -28,14 +30,14 @@ export default function ClientsRoutes() {
   const [clientList, setClientList] = useState<IClient[]>([]);
 
 
-
+  // Function to handle search changes
   function handleSearchChange(event: React.ChangeEvent<HTMLInputElement>) {
     const { value } = event.target;
     setFormData({ ...formData, searchClient: value });
   }
 
 
-
+  // Function to handle search
   const handleSearch = () => {
     const searchTerm = formData.searchClient;
     console.log('searchClient', formData.searchClient);

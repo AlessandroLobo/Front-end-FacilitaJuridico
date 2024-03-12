@@ -11,9 +11,11 @@ interface ModalInfoProps {
   backDropClose?: boolean;
 }
 
+//Component representing a modal window with customizable content and close functionality.
 function ModalInfo({ children, isOpen, setIsOpen, backDropClose }: ModalInfoProps) {
   if (!isOpen) return null;
 
+  // Function to handle the click event of the backdrop
   const handleBackDropClick = (e: React.MouseEvent<HTMLDivElement>) => {
     e.preventDefault();
     if (backDropClose) {
